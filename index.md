@@ -3,7 +3,7 @@ Zhihao PENG (彭志浩)
 Department of Computer Science(CS), City University of Hong Kong (CityU), Kowloon, Hong Kong
 Email: zhihapeng3-c AT my.cityu.edu.hk
 
-![To_Vancouver.jpg](https://i.loli.net/2021/04/18/HwrUPCsTbSFJOcD.jpg)
+![To_Vancouver.jpg](https://i.loli.net/2021/04/18/HwrUPCsTbSFJOcD.jpg){:height="30" width="10"}
 
 
 You can use the [editor on GitHub](https://github.com/ZhihaoPENG-CityU/ZhihaoPENG-CityU.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
