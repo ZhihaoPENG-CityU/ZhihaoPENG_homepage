@@ -1,5 +1,5 @@
 # ZhihaoPENG-CityU.github.io
-[<a href="https://github.com/Guo-Xiaoqing/Guo-Xiaoqing.github.io">Fork</a>].
+Fork by [<a href="https://github.com/Guo-Xiaoqing/Guo-Xiaoqing.github.io">here</a>].
 
 
 [![ZPENG's GitHub stats](https://github-readme-stats.vercel.app/api?username=ZhihaoPENG-CityU)](https://github.com/ZhihaoPENG-CityU)
