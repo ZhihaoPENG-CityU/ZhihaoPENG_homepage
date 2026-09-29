@@ -379,6 +379,9 @@ table.imgtable, table.imgtable td {
     --research-text: #353840;
     --research-muted: #686e7c;
     --research-rule: #d9dde4;
+    --main-image-size: 180px;
+    --sub-image-size: 64px;
+    --image-gap: 8px;
 }
 
 body {
@@ -462,7 +465,7 @@ body {
     padding: 0;
     border: 0;
     color: var(--research-text);
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     line-height: 1.35;
 }
@@ -515,8 +518,23 @@ tr[id^="paper-"]:target {
     max-width: 100%;
 }
 
-#layout-content > table:not(.profile-table) img {
-    height: auto;
+#layout-content img.main-image,
+#layout-content img.sub-image {
+    display: block;
+    flex: none;
+    object-fit: contain;
+    object-position: center;
+}
+
+#layout-content img.main-image {
+    width: var(--main-image-size);
+    height: var(--main-image-size);
+}
+
+#layout-content img.sub-image {
+    width: var(--sub-image-size);
+    height: var(--sub-image-size);
+    margin-top: var(--image-gap);
 }
 
 footer {
@@ -618,14 +636,6 @@ footer {
     padding-right: 18px;
 }
 
-.publication-list td:first-child img {
-    display: block;
-    width: min(100%, 158px) !important;
-    max-height: 142px;
-    object-fit: contain;
-    margin: 0 auto;
-}
-
 .publication-list td b {
     font-size: 1rem;
     line-height: 1.35;
@@ -658,6 +668,15 @@ footer {
     font-size: 1rem;
 }
 
+#preprint td p {
+    display: inline;
+    margin: 0;
+}
+
+#preprint td br {
+    display: none;
+}
+
 #tbPublications tbody {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -666,7 +685,7 @@ footer {
 
 #tbPublications tr {
     display: grid;
-    grid-template-columns: 188px minmax(0, 1fr);
+    grid-template-columns: var(--main-image-size) minmax(0, 1fr);
     column-gap: 18px;
     align-items: start;
     min-width: 0;
@@ -684,16 +703,15 @@ footer {
 }
 
 #tbPublications td:first-child {
-    min-height: 184px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fafbfc;
 }
 
-#tbPublications td:first-child img {
-    width: min(100%, 180px) !important;
-    max-height: 184px;
+#tbPublications td:first-child > a {
+    display: block;
+    max-width: 100%;
+    border-bottom: 0;
 }
 
 #tbPublications td:first-child.image-missing,
@@ -705,13 +723,19 @@ footer {
     grid-column: 1 / -1;
 }
 
-#tbPublications td b {
+#tbPublications td > b {
     display: block;
     font-size: 0.96rem;
 }
 
 #tbPublications td p {
     font-size: 0.9rem;
+    display: inline;
+    margin: 0;
+}
+
+#tbPublications td br {
+    display: none;
 }
 
 .compact-media-list td:first-child {
@@ -720,16 +744,9 @@ footer {
     text-align: center;
 }
 
-.compact-media-list td:first-child img {
-    width: auto !important;
-    max-width: 86px;
-    height: 112px !important;
-    object-fit: contain;
-    margin: 3px;
-}
-
 #tbAwards td {
     padding: 8px 0;
+    text-align: left;
 }
 
 .award-columns {
@@ -777,8 +794,12 @@ footer {
     padding-right: 8px;
 }
 
+#tbConfRevi .service-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 #tbPatents td:first-child {
-    width: 190px;
+    width: calc(2 * var(--main-image-size) + var(--image-gap));
 }
 
 #tbPatents {
@@ -790,11 +811,18 @@ footer {
     overflow-wrap: anywhere;
 }
 
-#tbPatents td:nth-child(2) > img {
-    width: auto !important;
-    max-width: min(100%, 420px);
-    height: auto !important;
-    object-fit: contain;
+.patent-main-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--image-gap);
+    max-width: 100%;
+}
+
+@media (max-width: 720px) {
+    #layout-content #tbPatents td:first-child {
+        width: auto;
+        padding-right: 0;
+    }
 }
 
 @media (max-width: 850px) {
@@ -827,14 +855,13 @@ footer {
         margin: 0;
     }
 
-    #tbPublications td:first-child img {
-        width: min(100%, 210px) !important;
-        max-height: 190px;
-    }
-
     .award-columns,
     .service-grid {
         grid-template-columns: 1fr;
         gap: 12px;
+    }
+
+    #tbConfRevi .service-grid {
+        grid-template-columns: 1fr;
     }
 }
