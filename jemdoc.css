@@ -665,8 +665,10 @@ footer {
 }
 
 #tbPublications tr {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 188px minmax(0, 1fr);
+    column-gap: 18px;
+    align-items: start;
     min-width: 0;
     padding: 12px 14px;
     border: 1px solid #e4e7ec;
@@ -682,17 +684,16 @@ footer {
 }
 
 #tbPublications td:first-child {
-    min-height: 126px;
+    min-height: 184px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
     background: #fafbfc;
 }
 
 #tbPublications td:first-child img {
-    width: min(100%, 150px) !important;
-    max-height: 126px;
+    width: min(100%, 180px) !important;
+    max-height: 184px;
 }
 
 #tbPublications td:first-child.image-missing,
@@ -812,6 +813,23 @@ footer {
 
     .compact-media-list td:first-child {
         text-align: left;
+    }
+
+    #tbPublications tr {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #tbPublications td:first-child {
+        min-height: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    #tbPublications td:first-child img {
+        width: min(100%, 210px) !important;
+        max-height: 190px;
     }
 
     .award-columns,
