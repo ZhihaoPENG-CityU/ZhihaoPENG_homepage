@@ -373,9 +373,9 @@ table.imgtable, table.imgtable td {
     text-align: left;
 }
 
-/* Research overview: burgundy headings, simple lists, and linked citations. */
+/* Research overview: shared accent headings, simple lists, and linked citations. */
 :root {
-    --research-accent: #98004b;
+    --research-accent: #1f5faf;
     --research-text: #353840;
     --research-muted: #686e7c;
     --research-rule: #d9dde4;
@@ -406,6 +406,9 @@ body {
 }
 
 .section-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     flex-wrap: wrap;
     gap: 12px 24px;
@@ -414,10 +417,21 @@ body {
     border-top: 1px solid var(--research-rule);
     border-bottom: 1px solid var(--research-rule);
     font-size: 0.95rem;
+    line-height: 1.5;
+    background: #fff;
 }
 
 .section-nav a {
+    color: var(--research-text);
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+}
+
+.section-nav a:hover,
+.section-nav a:focus-visible,
+.section-nav a[aria-current="location"] {
     color: var(--research-accent);
+    border-bottom-color: currentColor;
 }
 
 .research-intro {
@@ -497,13 +511,7 @@ a:focus-visible {
 }
 
 [id] {
-    scroll-margin-top: 24px;
-}
-
-tr[id^="paper-"]:target {
-    background: #fff4f8;
-    outline: 2px solid #edc2d4;
-    outline-offset: 3px;
+    scroll-margin-top: calc(var(--section-nav-height, 56px) + 24px);
 }
 
 #preprint td,
@@ -537,12 +545,27 @@ tr[id^="paper-"]:target {
     margin-top: var(--image-gap);
 }
 
-footer {
-    margin-top: 28px;
-    padding-top: 20px;
-    border-top: 1px solid var(--research-rule);
-    color: var(--research-muted);
-    font-size: 0.9rem;
+.highlights-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 16px 0 24px;
+}
+
+.highlights-gallery a {
+    display: block;
+    max-width: 100%;
+    border-bottom: 0;
+}
+
+.highlights-gallery img {
+    display: block;
+    width: auto;
+    height: 240px;
+    object-fit: contain;
+    object-position: left top;
+    border-radius: 4px;
 }
 
 @media (max-width: 720px) {
@@ -832,6 +855,11 @@ footer {
 }
 
 @media (max-width: 600px) {
+    .highlights-gallery img {
+        height: auto;
+        max-height: 240px;
+    }
+
     .publication-list td:first-child,
     .compact-media-list td:first-child,
     #tbPatents td:first-child {
